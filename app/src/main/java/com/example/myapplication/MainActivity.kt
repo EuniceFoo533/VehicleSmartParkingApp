@@ -5,18 +5,27 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var firebaseAuth:FirebaseAuth
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var login :Button = findViewById(R.id.button)
 
+        // Set the button
+        var login :Button = findViewById(R.id.button)
+        // Set the edit text
         var editEmail :EditText =findViewById(R.id.editEmail)
         var editPassword :EditText = findViewById(R.id.editPassword)
 
+
+
+        // function
         login.setOnClickListener{
             if(editEmail.text.isNullOrBlank() && editPassword.text.isNullOrBlank())
             {
@@ -25,7 +34,10 @@ class MainActivity : AppCompatActivity() {
 
             else
             {
-             Toast.makeText(this,"${editEmail.text} is login", Toast.LENGTH_SHORT).show()
+                val email = editEmail.toString();
+                val password = editPassword.toString();
+
+
             }
         }
     }
