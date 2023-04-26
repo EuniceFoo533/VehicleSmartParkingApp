@@ -13,7 +13,8 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
@@ -21,36 +22,28 @@ class SignUpActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        binding.buttonSignUp.setOnClickListener{
-            val email = binding.editTextEmail.toString()
-            val password = binding.editTextPassword.toString()
-            val confirmPass = binding.editTextConfirmPassword.toString()
+        binding.buttonSignUp.setOnClickListener {
+            val email = binding.editTextEmail.text.toString()
+            val password = binding.editTextPassword.text.toString()
+            val confirmPass = binding.editTextConfirmPassword.text.toString()
 
-            if(email.isNotEmpty() && password.isNotEmpty() && confirmPass.isNotEmpty()){
-                if(password == confirmPass){
-                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
-                        if(it.isSuccessful)
-                        {
-                            val intent = Intent(this,MainActivity::class.java)
-                            startActivity(intent)
-                        }
-                        else{
-                            Toast.makeText(this,it.exception.toString(),Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-
-                else
-                {
-                    Toast.makeText(this, "Password is not matching",Toast.LENGTH_SHORT).show()
-                }
+            if(email.isEmpty() && password.isEmpty() && confirmPass.isEmpty())
+            {
+                Toast.makeText(this,"Every field is required",Toast.LENGTH_SHORT).show()
             }
 
-            else{
-                Toast.makeText(this,"Empty field is not allowed",Toast.LENGTH_SHORT).show()
+            else if(email.isEmpty())
+            {
+                Toast.makeText(this,"Email is required",Toast.LENGTH_SHORT).show()
             }
+
+            else
+            {
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
+            }
+
         }
-
 
 
     }
