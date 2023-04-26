@@ -13,6 +13,8 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
+    private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.+[a-z]+"
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -34,13 +36,52 @@ class SignUpActivity : AppCompatActivity() {
 
             else if(email.isEmpty())
             {
-                Toast.makeText(this,"Email is required",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Email is required.",Toast.LENGTH_SHORT).show()
+            }
+
+            else if(password.isEmpty())
+            {
+                Toast.makeText(this,"Password is required.", Toast.LENGTH_SHORT).show()
+            }
+
+            else if(confirmPass.isEmpty())
+            {
+                Toast.makeText(this,"Confirm Password is required.",Toast.LENGTH_SHORT).show()
+            }
+
+            else if(password.length < 8)
+            {
+                Toast.makeText(this,"Password should at least 8 characters.",Toast.LENGTH_SHORT).show()
+            }
+
+            else if(!email.matches(emailPattern.toRegex()))
+            {
+                Toast.makeText(this,"Invalid email.",Toast.LENGTH_SHORT).show()
+
             }
 
             else
             {
-                val intent = Intent(this,MainActivity::class.java)
-                startActivity(intent)
+                if(password != confirmPass)
+                {
+                    Toast.makeText(this,"Password is not matching.",Toast.LENGTH_SHORT).show()
+                }
+
+                else
+                {
+                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
+                    if(it.isSuccessful)
+                    {
+                        val intent = Intent(this,MainActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                    else
+                    {
+                        Toast.makeText(this,it.exception.toString(),Toast.LENGTH_SHORT).show()
+                    }
+                }
+                }
             }
 
         }
