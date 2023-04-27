@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -71,7 +70,7 @@ class SignUpActivity : AppCompatActivity() {
                     firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                     if(it.isSuccessful)
                     {
-                        val intent = Intent(this,MainActivity::class.java)
+                        val intent = Intent(this,LoginActivity::class.java)
                         startActivity(intent)
                     }
 
@@ -86,7 +85,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.textViewToLogin.setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,LoginActivity::class.java)
             startActivity(intent)
         }
 
