@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
 
 
         // Set the button
-        var login :Button = findViewById(R.id.button)
+        var login :Button = findViewById(R.id.buttonLogin)
         // Set the edit text
-        var editEmail :EditText =findViewById(R.id.editEmail)
-        var editPassword :EditText = findViewById(R.id.editPassword)
+        var editEmail :EditText =findViewById(R.id.editTextEmail)
+        var editPassword :EditText = findViewById(R.id.editTextPassword)
 
 
 
