@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="412dp"
+        android:gravity="top"
+        app:srcCompat="@drawable/main" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:paddingTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="Welcome To"
+        android:textColor="#5D9BFF"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_extrabold"
+        android:text="Vehicle \nSmart Parking"
+        android:textColor="@color/black"
+        android:textSize="38sp"/>
+
+    <Button
+        android:id="@+id/button"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_blue"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_bold"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_grey"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_bold"/>
+
+</LinearLayout>
